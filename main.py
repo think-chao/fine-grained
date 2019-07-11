@@ -42,6 +42,7 @@ def train(tl, vl):
     criterion = nn.CrossEntropyLoss()
     model = models.resnet152(pretrained=True)  # ---> input size must be 3x299x299
     optimizer = torch.optim.SGD(model.parameters(), lr=0.001, momentum=0.9)  # use smaller lr for pre-trained models
+    schduler = torch.optim.lr_scheduler.ReduceLROnPlateau()
     model.fc = nn.Linear(2048, num_classes)
 
     if len(os.listdir('./checkpoints')) > 0:

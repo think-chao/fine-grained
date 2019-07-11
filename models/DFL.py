@@ -5,7 +5,7 @@ import torchvision
 
 
 class DFL_VGG16(nn.Module):
-    def __init__(self, k=10, nclass=200):
+    def __init__(self, k=10, nclass=120):
         super(DFL_VGG16, self).__init__()
         self.k = k
         self.nclass = nclass
@@ -23,8 +23,8 @@ class DFL_VGG16(nn.Module):
         # G-Stream
         self.conv5 = conv5
         self.cls5 = nn.Sequential(
-            nn.Conv2d(512, 200, kernel_size=1, stride=1, padding=0),
-            nn.BatchNorm2d(200),
+            nn.Conv2d(512, 120, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(120),
             nn.ReLU(True),
             nn.AdaptiveAvgPool2d((1, 1)),
         )
